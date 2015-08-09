@@ -1,0 +1,12 @@
+png(filename = "plot4.png", width = 480, height = 480)
+par(mfrow = c(2,2))
+with(powerData3, {
+      plot(datetime, Global_active_power, xlab = "", ylab = "Global Active Power", type = "l")
+      plot(datetime, Voltage, type = "l")
+      plot(datetime, Sub_metering_1, xlab = "", ylab = "Energy sub metering", type = "l")
+      with(powerData3, lines(datetime, Sub_metering_2, type = "l", col = "red"))
+      with(powerData3, lines(datetime, Sub_metering_3, type = "l", col = "blue"))
+      legend("topright", legend = colnames(powerData3[7:9]), lty = "solid", col = c("black", "red", "blue"))
+      plot(datetime, Global_reactive_power, type = "l")
+})
+dev.off()
